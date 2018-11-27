@@ -4,9 +4,9 @@ import './media.css';
 
 class Media extends Component {
 
-    state = {
+    /* state = {
         author: this.props.author,
-    }
+    } */
 
     /* constructor(props){
         super(props);
@@ -16,10 +16,10 @@ class Media extends Component {
     } */
 
     handleOnClick = (event) => {
-        console.log(this.props.image);
-        this.setState({
+        console.log(this.props.cover);
+        /* this.setState({
             author: 'YAM',
-        });
+        }); */
         
     }
 
@@ -27,9 +27,9 @@ class Media extends Component {
         return (
             <div className='Media' onClick={this.handleOnClick}>
                 <div className='Media-cover' >
-                    <img className='Media-image' src={this.props.image} alt="" height={160} width={260}/>
+                    <img className='Media-image' src={this.props.cover} alt="" height={160} width={260}/>
                     <h3 className='Media-title'>{this.props.title}</h3>
-                    <p className='Media-author'>{this.state.author}</p>
+                    <p className='Media-author'>{this.props.author}</p>
                 </div>
             </div>
         )
@@ -38,7 +38,7 @@ class Media extends Component {
 
 Media.propTypes = {
     title: PropTypes.string.isRequired,
-    image: PropTypes.string,
+    cover: PropTypes.string,
     author: PropTypes.string,
 }
 
