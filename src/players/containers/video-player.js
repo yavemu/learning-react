@@ -8,7 +8,8 @@ import Timer from '../components/timer';
 class VideoPlayer extends Component {
   state = {
     pause: true,
-    duration: 0
+    duration: 0,
+    currentTime: 0,
   };
 
   componentDidMount() {
@@ -25,13 +26,16 @@ class VideoPlayer extends Component {
 
   handleLoadedMetadata = e => {
     this.video = e.target;
-
-    console.log(this.video);
-    
-
     this.setState({
         duration: this.video.duration
     })
+  }
+  
+  handleTimeUpdate = e => {
+      this.video = e.target;
+      this.setState({
+          currentTime: this.video.currentTime
+      })    
   }
 
   render() {
@@ -43,6 +47,7 @@ class VideoPlayer extends Component {
           pause={this.state.pause}
           src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
           handleLoadedMetadata={this.handleLoadedMetadata}
+          handleTimeUpdate={this.handleTimeUpdate}
         />
         <PlayPause
           pause={this.state.pause}
@@ -50,6 +55,7 @@ class VideoPlayer extends Component {
         />
         <Timer 
             duration={this.state.duration}
+            currentTime={this.state.currentTime}
         />
       </VideoPlayerLayout>
     );
