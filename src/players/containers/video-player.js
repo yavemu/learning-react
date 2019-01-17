@@ -4,13 +4,13 @@ import Video from '../components/video';
 import Title from '../components/title';
 import PlayPause from '../components/play-pause';
 import Timer from '../components/timer';
-import Utils from '../../utils';
+import ProgressBar from '../components/progress-bar';
 
 class VideoPlayer extends Component {
   state = {
     pause: true,
-      duration: Utils.formatTime('0'),
-    currentTime: Utils.formatTime('0'),
+    duration: 0,
+    currentTime: 0,
   };
 
   componentDidMount() {
@@ -28,15 +28,19 @@ class VideoPlayer extends Component {
   handleLoadedMetadata = e => {
     this.video = e.target;
     this.setState({
-        duration: Utils.formatTime(this.video.duration)
+        duration: this.video.duration
     })
   }
   
   handleTimeUpdate = e => {
       this.video = e.target;
       this.setState({
-        currentTime: Utils.formatTime(this.video.currentTime)
-      });    
+        currentTime: this.video.currentTime
+      });
+  }
+  
+  handleProgressChange = e => {
+      this.video.currentTime = e.target.value
   }
 
   render() {
@@ -57,6 +61,11 @@ class VideoPlayer extends Component {
         <Timer 
             duration={this.state.duration}
             currentTime={this.state.currentTime}
+        />
+        <ProgressBar 
+            duration={this.state.duration}
+            currentTime={this.state.currentTime}
+            handleProgressChange={this.handleProgressChange}
         />
       </VideoPlayerLayout>
     );

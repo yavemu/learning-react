@@ -9,7 +9,10 @@ const formatTime = secs => `${leftPad(~~(secs / 60))}:${leftPad(~~(secs % 60))}`
     es una forma super interesante y geek de convertir a enteros … y mucho más eficiente!
 */
 
+const convertToInt = num => parseInt(num,10)
+
 
 export default {
-    formatTime
+    formatTime,
+    convertToInt
 }

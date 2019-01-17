@@ -1,11 +1,12 @@
 import React from 'react';
 import './timer.css';
+import Utils from "../../utils";
 
 function Timer(props) {
     return <div className="Timer">
         <p>
           <span>
-                {props.currentTime} / {props.duration}
+            {Utils.formatTime(props.currentTime)} / {Utils.formatTime(props.duration)}
           </span>
         </p>
       </div>;
