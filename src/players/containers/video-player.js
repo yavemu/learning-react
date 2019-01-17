@@ -9,6 +9,12 @@ class VideoPlayer extends Component {
         pause: true
     };
 
+    componentDidMount(){
+        this.setState({
+            pause: (!this.state.autoplay)
+        })
+    }
+
     handlePause = event => {
         this.setState({
             pause: !this.state.pause
@@ -20,7 +26,8 @@ class VideoPlayer extends Component {
         <VideoPlayerLayout>
             <Title title="Este es mi titulo" />
             <Video
-                autoplay={false}
+                autoplay={this.props.autoplay}
+                pause={this.state.pause}
                 src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
             />
             <PlayPause 
