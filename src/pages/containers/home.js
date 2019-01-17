@@ -7,6 +7,7 @@ import ModalContainer from '../../widgets/containers/modal';
 import Modal from "../../widgets/components/modal";
 import HandleError from "../../error/containers/handle-error";
 import SearchContainer from "../../widgets/containers/search";
+import VideoPlayer from "../../players/containers/video-player";
 
 class Home extends Component{
 
@@ -25,6 +26,7 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
+                    <VideoPlayer />
                     <SearchContainer></SearchContainer>
                     <Categories categories={data.categories} handleClick={this.handleVisibleModal} />
                     {
