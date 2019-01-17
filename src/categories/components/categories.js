@@ -6,7 +6,13 @@ function Categories(props) {
     return (
         <div className="Categories">
             {props.categories.map(item => {
-                return <Category {...item} key={item.id} />
+                return (
+                    <Category 
+                        {...item} 
+                        key={item.id} 
+                        handleClick = {props.handleClick}
+                    />
+                )
             })}
         </div>
     )
