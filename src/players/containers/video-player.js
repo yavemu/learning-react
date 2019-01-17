@@ -4,12 +4,13 @@ import Video from '../components/video';
 import Title from '../components/title';
 import PlayPause from '../components/play-pause';
 import Timer from '../components/timer';
+import Utils from '../../utils';
 
 class VideoPlayer extends Component {
   state = {
     pause: true,
-    duration: 0,
-    currentTime: 0,
+      duration: Utils.formatTime('0'),
+    currentTime: Utils.formatTime('0'),
   };
 
   componentDidMount() {
@@ -27,15 +28,15 @@ class VideoPlayer extends Component {
   handleLoadedMetadata = e => {
     this.video = e.target;
     this.setState({
-        duration: this.video.duration
+        duration: Utils.formatTime(this.video.duration)
     })
   }
   
   handleTimeUpdate = e => {
       this.video = e.target;
       this.setState({
-          currentTime: this.video.currentTime
-      })    
+        currentTime: Utils.formatTime(this.video.currentTime)
+      });    
   }
 
   render() {
