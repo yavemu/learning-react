@@ -1,4 +1,5 @@
 import React from 'react';
+import './related.css'
 //import logo from '../../../public/images/logo.png';
 
 function Related(props) {
