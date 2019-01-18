@@ -15,9 +15,10 @@ class Home extends Component{
         modalVisible: false,
     }
 
-    handleVisibleModal = (e) =>{
+    handleVisibleModal = (media) =>{
         this.setState({
-            modalVisible: !this.state.modalVisible
+            modalVisible: !this.state.modalVisible,
+            media
         })
     }
 
@@ -26,16 +27,20 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <VideoPlayer 
-                        autoplay={false}
+                    <SearchContainer />
+                    <Categories
+                     categories={data.categories} 
+                     handleClick={this.handleVisibleModal} 
                     />
-                    <SearchContainer></SearchContainer>
-                    <Categories categories={data.categories} handleClick={this.handleVisibleModal} />
                     {
                         this.state.modalVisible &&
                         <ModalContainer>
                             <Modal handleClick={this.handleVisibleModal} >
-                                <h1>Esto es un portal</h1>
+                                <VideoPlayer 
+                                    autoplay={true}
+                                    src={this.state.media.src}
+                                    title={this.state.media.title}
+                                />
                             </Modal>
                         </ModalContainer>
                     }

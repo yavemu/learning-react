@@ -9,7 +9,7 @@ function Playlist(props) {
             <Media 
               {...item} 
               key={item.id} 
-              handleClick={props.handleClick}
+              openModal={props.handleClick}
             />
           );
         })}
