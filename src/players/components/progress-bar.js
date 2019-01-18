@@ -4,7 +4,7 @@ import Utils from './../../utils'
 
 function ProgressBar(props) {
     return(
-        <div>
+        <div className='ProgressBar'>
             <input 
                 type='range'
                 min= {0}

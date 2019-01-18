@@ -5,4 +5,5 @@
 }
 .ProgressBar input{
 	width: 100%;
+	cursor: grab;
 }
